@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import ContactsScreen from './Contacts';
 import PaymentScreen from './PaymentScreen';
+import codePush from "react-native-code-push";
 
 const RootStack = createStackNavigator(
     {
@@ -30,3 +31,6 @@ export default class App extends React.Component {
     return <AppContainer />;
   }
 }
+
+App = codePush({ updateDialog: true, installMode: codePush.InstallMode.IMMEDIATE })(App);
+

@@ -1,3 +1,4 @@
 <resources>
+	<string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">552b2792-5b55-4efc-b061-b4b0f423b301</string>
     <string name="app_name">ContactUC</string>
 </resources>
