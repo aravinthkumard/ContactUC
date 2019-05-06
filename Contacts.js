@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, FlatList, PermissionsAndroid, TouchableOpacity, Alert, Image } from 'react-native';
+import { Platform, StyleSheet, Text, View, FlatList, PermissionsAndroid, TouchableOpacity, Alert } from 'react-native';
 import Contacts from 'react-native-contacts';
-import { Icon, Card, Avatar } from 'react-native-elements'
-import image from './avatar.png';
+import { Icon, Avatar } from 'react-native-elements'
 
 export default class ContactsScreen extends Component {
 
   static navigationOptions = {
-    headerTitle: <LogoTitle />,
+    title: 'Contacts',
   };
 
   constructor(props) {
@@ -41,12 +40,6 @@ export default class ContactsScreen extends Component {
         })
       })
     }
-  }
-
-
-
-  onButtonPressed() {
-    Alert.alert("Invite has been sent to ");
   }
 
   render() {
@@ -133,8 +126,9 @@ export default class ContactsScreen extends Component {
             <Text style={styles.footerText}>Contacts</Text>
           </View>
           <View style={styles.bottomButtons}>
-            <Icon name='book' />
-            <Text style={styles.footerText}>Summary</Text>
+            <Icon name='book' onPress={() => {
+                            this.props.navigation.navigate('AppCenter');}}/>
+            <Text style={styles.footerText}>CodePush</Text>
           </View>
           <View style={styles.bottomButtons}>
             <Icon name='folder1' />

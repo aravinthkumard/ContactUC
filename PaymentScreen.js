@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Card, Avatar } from 'react-native-elements';
 import { TextInput } from 'react-native-gesture-handler';
-import { Button } from 'native-base';
+
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
@@ -10,37 +10,30 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 
 export default class PaymentScreen extends React.Component {
 
+    static navigationOptions = {
+        title: 'Payments',
+    };
+
+
     constructor(props) {
         super(props);
         this.state = {
-            //defauilt value of the date time
             date: '',
         };
     }
 
     componentDidMount() {
         var that = this;
-        var date = new Date().getDate(); //Current Date
-        var month = new Date().getMonth(); //Current Month
+        var date = new Date().getDate();
+        var month = new Date().getMonth();
         const aMonth = [monthNames[month]]
-        var year = new Date().getFullYear(); //Current Year
+        var year = new Date().getFullYear();
         that.setState({
-            //Setting the value of the date time
             date:
                 date + ' ' + aMonth + ' ' + year
         });
 
     }
-
-    static navigationOptions = ({ navigation, navigationOptions }) => {
-        return {
-            title: navigation.getParam('otherParam', 'Payments'),
-            headerStyle: {
-                backgroundColor: navigationOptions.headerTintColor,
-            },
-            headerTintColor: navigationOptions.headerStyle.backgroundColor,
-        };
-    };
 
     render() {
         const { navigation } = this.props;
@@ -79,7 +72,9 @@ export default class PaymentScreen extends React.Component {
                     <TextInput style={styles.reference}>{(givenName)}</TextInput>
                 </Card>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    this.props.navigation.navigate('AppCenter');
+                }}>
                     <View style={styles.buttonWrapper}>
                         <Text style={styles.buttonText}>PROCEED</Text>
                     </View>
