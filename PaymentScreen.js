@@ -13,7 +13,7 @@ export default class PaymentScreen extends React.Component {
     static navigationOptions = {
         title: 'Payments',
     };
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -38,10 +38,9 @@ export default class PaymentScreen extends React.Component {
         const { navigation } = this.props;
         const givenName = navigation.getParam('givenName', 'NO-ID');
         const familyName = navigation.getParam('familyName', 'some default value');
-
         return (
             <View style={styles.container}>
-                <Card style={{ marginTop: 5 }}>
+                <Card>
                     <Text style={styles.title}>From</Text>
                     <Text style={styles.type}>SAVINGS ACCOUNT</Text>
                     <Text style={styles.account}>345238  00856423</Text>
@@ -86,9 +85,7 @@ export default class PaymentScreen extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         justifyContent: 'center'
-
     },
     title: {
         fontSize: 14,
@@ -127,13 +124,12 @@ const styles = StyleSheet.create({
         height: 25,
         marginLeft: 20,
         marginRight: 20,
-        flexDirection: 'column',
     },
     buttonText: {
         justifyContent: 'center',
         alignSelf: 'center',
-        marginTop: 2,
-        marginBottom: 2,
+        marginTop: 3,
+        marginBottom: 3,
         marginHorizontal: 2,
         elevation: 1,
         color: '#FFFFFF'
