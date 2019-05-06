@@ -1,9 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Card, Avatar } from 'react-native-elements';
 import { TextInput } from 'react-native-gesture-handler';
 import { Button } from 'native-base';
 
+const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
 
 export default class PaymentScreen extends React.Component {
 
@@ -18,16 +21,16 @@ export default class PaymentScreen extends React.Component {
     componentDidMount() {
         var that = this;
         var date = new Date().getDate(); //Current Date
-        var month = new Date().getMonth() + 1; //Current Month
+        var month = new Date().getMonth(); //Current Month
+        const aMonth = [monthNames[month]]
         var year = new Date().getFullYear(); //Current Year
         that.setState({
             //Setting the value of the date time
             date:
-                date + '/' + month + '/' + year
+                date + ' ' + aMonth + ' ' + year
         });
 
     }
-
 
     static navigationOptions = ({ navigation, navigationOptions }) => {
         return {
@@ -40,37 +43,48 @@ export default class PaymentScreen extends React.Component {
     };
 
     render() {
-        /* 2. Get the param, provide a fallback value if not available */
         const { navigation } = this.props;
         const givenName = navigation.getParam('givenName', 'NO-ID');
         const familyName = navigation.getParam('familyName', 'some default value');
 
         return (
             <View style={styles.container}>
-                <Card>
+                <Card style={{ marginTop: 5 }}>
                     <Text style={styles.title}>From</Text>
-                    <Text style={styles.type}>Savings Account</Text>
+                    <Text style={styles.type}>SAVINGS ACCOUNT</Text>
                     <Text style={styles.account}>345238  00856423</Text>
-                    <Text style={styles.type}>Available Balance: £564.98</Text>
+                    <Text style={styles.type1}>Available Balance: £564.98</Text>
                 </Card>
                 <Card>
                     <Text style={styles.title}>To</Text>
-                    <Text style={styles.type}>Payee: {(givenName)}</Text>
-                    <Text style={styles.account}>A/C No: {(familyName)}</Text>
+                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View>
+                            <Text style={styles.type}>{(givenName)} Davidson</Text>
+                        </View>
+                        <View>
+                            <Avatar
+                                size="large"
+                                rounded
+                                source={require('./avatar.png')}
+                                activeOpacity={0.5}
+                            />
+                        </View>
+                    </View>
+                    <Text style={styles.account1}>{(familyName)}</Text>
                     <Text style={styles.title}>Amount</Text>
-                    <TextInput style={{ color: 'gray', fontSize: 16, fontWeight: 'bold' }}>£</TextInput>
+                    <TextInput style={{ color: 'gray', fontSize: 16, fontWeight: 'bold' }}>£ 00.00</TextInput>
                     <Text style={styles.title}>When </Text>
                     <TextInput style={{ color: 'gray', fontSize: 16 }}>{this.state.date}</TextInput>
                     <Text style={styles.title}>Reference</Text>
-                    <TextInput style={{ color: 'gray', fontSize: 16 }}></TextInput>
+                    <TextInput style={styles.reference}>{(givenName)}</TextInput>
                 </Card>
-                <Card>
+
                 <TouchableOpacity>
-                  <View style={styles.buttonWrapper}>
-                    <Text style={styles.buttonText}>PROCEED</Text>
-                  </View>
+                    <View style={styles.buttonWrapper}>
+                        <Text style={styles.buttonText}>PROCEED</Text>
+                    </View>
                 </TouchableOpacity>
-                </Card>
+
             </View >
         );
     }
@@ -79,13 +93,12 @@ export default class PaymentScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',
-        marginLeft: 12,
+        justifyContent: 'center'
 
     },
     title: {
-        fontSize: 20,
-        color: 'green',
+        fontSize: 14,
+        color: '#00402e',
         marginTop: 3,
         marginBottom: 5,
         fontWeight: 'bold'
@@ -93,21 +106,36 @@ const styles = StyleSheet.create({
     type: {
         fontSize: 16,
         color: 'black',
-        marginBottom: 5
+        marginBottom: 5,
+        textTransform: 'uppercase'
+    },
+    type1: {
+        fontSize: 16,
+        color: 'black',
+        marginBottom: 5,
     },
     account: {
-        fontSize: 14,
+        fontSize: 15,
         color: 'gray',
         marginBottom: 5,
         fontWeight: 'bold'
     },
+    account1: {
+        fontSize: 15,
+        color: 'gray',
+        marginTop: 25,
+        fontWeight: 'bold',
+        marginBottom: 8
+    },
     buttonWrapper: {
-        backgroundColor: 'forestgreen',
-        marginRight: 10,
-        
-    
-      },
-      buttonText: {
+        backgroundColor: '#00402e',
+        marginTop: 20,
+        height: 25,
+        marginLeft: 20,
+        marginRight: 20,
+        flexDirection: 'column',
+    },
+    buttonText: {
         justifyContent: 'center',
         alignSelf: 'center',
         marginTop: 2,
@@ -115,6 +143,11 @@ const styles = StyleSheet.create({
         marginHorizontal: 2,
         elevation: 1,
         color: '#FFFFFF'
-      },
+    },
+    reference: {
+        color: 'gray',
+        fontSize: 16,
+        textTransform: 'uppercase'
+    }
 
 });

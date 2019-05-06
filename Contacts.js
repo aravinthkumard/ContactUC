@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, FlatList, PermissionsAndroid, TouchableOpacity, Alert, Image } from 'react-native';
 import Contacts from 'react-native-contacts';
-import { Icon, Card } from 'react-native-elements'
+import { Icon, Card, Avatar } from 'react-native-elements'
+import image from './avatar.png';
 
 
 
@@ -49,11 +50,12 @@ export default class ContactsScreen extends Component {
           } else {
             this.setState({ contacts })
           }
-          console.log(contacts);
         })
       })
     }
   }
+
+
 
   onButtonPressed() {
     Alert.alert("Invite has been sent to ");
@@ -66,25 +68,36 @@ export default class ContactsScreen extends Component {
         <FlatList style={styles.border}
           data={this.state.contacts}
           renderItem={({ item }) => (
-
             <View>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={styles.contact_details}>
-                  {`${item.givenName} `} {item.familyName}
-                </Text>
-                <TouchableOpacity onPress={() => {
-                  this.props.navigation.navigate('Payment', {
-                    givenName: item.givenName,
-                    familyName: '347654  08642347',
-                  });
-                }}>
-                  <View style={styles.buttonWrapper}>
-                    <Text style={styles.buttonText}>PAY</Text>
-                  </View>
-                </TouchableOpacity>
+              <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ width: 40 }}>
+                  <Avatar
+                    size="small"
+                    rounded
+                    source={require('./avatar.png')
+                    } activeOpacity={0.6}
+                    containerStyle={{ flex: 2, marginLeft: 7, marginTop: 5 }}
+                  />
+                </View>
+                <View style={{ width: 250 }}>
+                  <Text style={styles.contact_details}>
+                    {`${item.givenName} `} {item.familyName}
+                  </Text>
+                </View>
+                <View style={{ width: 80 }}>
+                  <TouchableOpacity onPress={() => {
+                    this.props.navigation.navigate('Payment', {
+                      givenName: item.givenName,
+                      familyName: '347654  08642347',
+                    });
+                  }}>
+                    <View style={styles.buttonWrapper}>
+                      <Text style={styles.buttonText}>PAY</Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
               </View>
-              <Text style={styles.phones}>A/C: 347654   97536574</Text>
-
+              <Text style={styles.phones}>A/C: 987643 0096542375</Text>
             </View>
           )}
           numColumns={1}
@@ -95,15 +108,28 @@ export default class ContactsScreen extends Component {
           data={this.state.contacts}
           renderItem={({ item }) => (
             <View>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={styles.contact_details}>
-                  {`${item.givenName} `} {item.familyName}
-                </Text>
-                <TouchableOpacity onPress={() => { Alert.alert('Invite has been sent to selected contact.') }}>
-                  <View style={styles.buttonWrapper}>
-                    <Text style={styles.buttonText}>INVITE</Text>
-                  </View>
-                </TouchableOpacity>
+              <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ width: 40 }}>
+                  <Avatar
+                    size="small"
+                    rounded
+                    source={require('./avatar1.png')}
+                    activeOpacity={0.4}
+                    containerStyle={{ flex: 2, marginLeft: 7, marginTop: 5 }}
+                  />
+                </View>
+                <View style={{ width: 250 }}>
+                  <Text style={styles.contact_details}>
+                    {`${item.givenName} `} {item.familyName}
+                  </Text>
+                </View>
+                <View style={{ width: 80 }}>
+                  <TouchableOpacity onPress={() => { Alert.alert('Invite has been sent to selected contact.') }}>
+                    <View style={styles.buttonWrapper}>
+                      <Text style={styles.buttonText}>INVITE</Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
               </View>
               {item.phoneNumbers.map(phone => (
                 <Text style={styles.phones}>M: {phone.number}</Text>
@@ -127,7 +153,6 @@ export default class ContactsScreen extends Component {
             <Text style={styles.footerText}>Statements</Text>
           </View>
         </View>
-
       </View>
     )
   }
@@ -141,12 +166,12 @@ const styles = StyleSheet.create({
   phones: {
     fontSize: 15,
     textAlign: 'left',
-    marginLeft: 15
+    marginLeft: 52
   },
   contact_details: {
     color: 'black',
     fontSize: 18,
-    marginTop: 5,
+    marginTop: 7,
     marginBottom: 5,
     marginLeft: 12
   },
@@ -157,7 +182,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   buttonWrapper: {
-    backgroundColor: 'forestgreen',
+    backgroundColor: '#00543c',
     marginTop: 7,
     marginRight: 10
 
@@ -174,7 +199,7 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 6,
     marginBottom: 6,
-    color: 'green',
+    color: '#00402e',
     fontWeight: 'bold',
     marginLeft: 15,
     fontSize: 16
@@ -187,7 +212,7 @@ const styles = StyleSheet.create({
     bottom: -10,
     backgroundColor: 'lightgrey',
     flexDirection: 'row',
-    height: 65,
+    height: 62,
     alignItems: 'center',
   },
   bottomButtons: {
@@ -197,7 +222,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   footerText: {
-    color: 'green',
+    color: '#00402e',
     alignItems: 'center',
     fontSize: 15,
     fontWeight: 'bold'
@@ -207,7 +232,7 @@ const styles = StyleSheet.create({
     height: 20
   },
   border: {
-    flex:1,
+    flex: 1,
     borderRadius: 6,
     marginRight: 5,
     marginLeft: 5,
