@@ -4,18 +4,6 @@ import Contacts from 'react-native-contacts';
 import { Icon, Card, Avatar } from 'react-native-elements'
 import image from './avatar.png';
 
-
-
-class LogoTitle extends React.Component {
-  render() {
-    return (
-      <Image
-        style={{ width: 30, height: 30 }}
-      />
-    );
-  }
-}
-
 export default class ContactsScreen extends Component {
 
   static navigationOptions = {
