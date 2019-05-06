@@ -34,7 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new CodePush("g_tMjeCcLXzcNHt5XP_2_XBJ_0me8cf47679-e91c-41f4-8a99-7f481428875a"), getApplicationContext(), BuildConfig.DEBUG),
+            new CodePush("g_tMjeCcLXzcNHt5XP_2_XBJ_0me8cf47679-e91c-41f4-8a99-7f481428875a", getApplicationContext(), BuildConfig.DEBUG),
             new RNGestureHandlerPackage(),
             new VectorIconsPackage(),
           new ReactNativeContacts()
