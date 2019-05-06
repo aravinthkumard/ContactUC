@@ -43,8 +43,8 @@ export default class CodePushDemo extends Component {
         <Text style={styles.codePushText1}>This is On-Air CodePush Demo</Text>
         <Image style={{ width: 290, height: 290 }} source={require('./noUpdate.png')} />
         {/*<Image style={{ width: 350, height: 250 }} source={require('./image.png')} />*/}
-        {/*<Text style={styles.codePushText3}>No update pushed yet!</Text>*/}
-        <Text style={styles.codePushText3}>Your app has been Updated at {this.state.date}</Text>
+        <Text style={styles.codePushText3}>No update pushed yet!</Text>
+        {/*<Text style={styles.codePushText3}>Your app has been Updated at {this.state.date}</Text>*/}
       </View>
     );
   }
