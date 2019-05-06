@@ -122,16 +122,16 @@ export default class ContactsScreen extends Component {
         />
         <View style={styles.footer}>
           <View style={styles.bottomButtons}>
-            <Icon name='contacts' />
+            <Icon name='address-book' type='font-awesome' size={28}/>
             <Text style={styles.footerText}>Contacts</Text>
           </View>
           <View style={styles.bottomButtons}>
-            <Icon name='book' onPress={() => {
+            <Icon name='upload' type='font-awesome' size={28} onPress={() => {
                             this.props.navigation.navigate('AppCenter');}}/>
             <Text style={styles.footerText}>CodePush</Text>
           </View>
           <View style={styles.bottomButtons}>
-            <Icon name='folder1' />
+            <Icon name='file' type='font-awesome' size={28}/>
             <Text style={styles.footerText}>Statements</Text>
           </View>
         </View>
@@ -176,7 +176,8 @@ const styles = StyleSheet.create({
     marginBottom: 2,
     marginHorizontal: 2,
     elevation: 1,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontWeight:'bold'
   },
   title: {
     marginTop: 6,

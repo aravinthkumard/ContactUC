@@ -132,7 +132,8 @@ const styles = StyleSheet.create({
         marginBottom: 3,
         marginHorizontal: 2,
         elevation: 1,
-        color: '#FFFFFF'
+        color: '#FFFFFF',
+        fontWeight:'bold'
     },
     reference: {
         color: 'gray',
