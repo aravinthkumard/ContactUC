@@ -13,8 +13,7 @@ export default class PaymentScreen extends React.Component {
     static navigationOptions = {
         title: 'Payments',
     };
-
-
+    
     constructor(props) {
         super(props);
         this.state = {
